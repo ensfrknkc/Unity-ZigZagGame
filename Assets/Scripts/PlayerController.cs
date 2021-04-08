@@ -92,7 +92,9 @@ public class PlayerController : MonoBehaviour
                     lastTouchX = Input.GetTouch(0).position.x;
                     break;   
                 case TouchPhase.Ended:
-                    if (Mathf.Abs(lastTouchX - firstTouchX) > 40) Turn();
+                    lastTouchX = Input.GetTouch(0).position.x;
+                    var diff = Mathf.Abs(lastTouchX - firstTouchX);
+                    if (diff > 50) Turn();
                     break;  
             }
         }  
